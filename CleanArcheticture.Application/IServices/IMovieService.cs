@@ -10,5 +10,9 @@ namespace CleanArchitecture.Application.IService
     public interface IMovieService
     {
         List<Movie> GetAllMovies();
+        Movie GetMoviesByID(int ID);
+        void AddMovie(Movie oMovie);
+        void UpdateMovie(Movie oMovie);
+        void DeleteMovie(int ID);
     }
 }

@@ -15,9 +15,27 @@ namespace CleanArchitecture.Application.Service
         }
         public List<Movie> GetAllMovies()
         {
-            var movies = movieRepository.GetAllMovies();
-
+            List<Movie> movies = movieRepository.GetAllMovies();
             return movies;
+        }
+        public void AddMovie(Movie oMovie)
+        {
+            movieRepository.AddMovie(oMovie);
+        }
+
+        public void DeleteMovie(int ID)
+        {
+            movieRepository.DeleteMovie(ID);
+        }
+
+        public Movie GetMoviesByID(int ID)
+        {
+            return movieRepository.GetMoviesByID(ID);
+        }
+
+        public void UpdateMovie(Movie oMovie)
+        {
+            movieRepository.UpdateMovie(oMovie);
         }
     }
 }

@@ -10,6 +10,10 @@ namespace CleanArchitecture.Application.IRepository
     public interface IMovieRepository
     {
         List<Movie> GetAllMovies();
+        Movie GetMoviesByID(int ID);
+        bool AddMovie(Movie oMovie);
+        bool UpdateMovie(Movie oMovie);
+        bool DeleteMovie(int ID);
 
     }
 }
