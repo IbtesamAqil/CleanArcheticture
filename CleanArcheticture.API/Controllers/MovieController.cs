@@ -1,4 +1,4 @@
-﻿using CleanArcheticture.Domain;
+﻿using CleanArcheticture.Domain.Entites;
 using CleanArchitecture.Application.IService;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,7 +31,7 @@ namespace CleanArcheticture.API.Controllers
             {
                 Cost = 900,
                 Name = "NoorAndIbtesam",
-                MovieId = 4
+                Id = 4
             };
             _movieService.AddMovie(oMovie);
             return Ok();
@@ -43,7 +43,7 @@ namespace CleanArcheticture.API.Controllers
             {
                 Cost = 1000,
                 Name = "Noor And Ibtesam",
-                MovieId = 4
+                Id = 4
             };
             _movieService.UpdateMovie(oMovie);
             return Ok();

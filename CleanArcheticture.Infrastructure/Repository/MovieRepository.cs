@@ -1,4 +1,4 @@
-﻿using CleanArcheticture.Domain;
+﻿using CleanArcheticture.Domain.Entites;
 using CleanArchitecture.Application.IRepository;
 using System;
 using System.Collections.Generic;
@@ -12,9 +12,9 @@ namespace CleanArcheticture.Infrastructure.Repository
     {
         private static List<Movie> movies = new List<Movie>()
         {
-            new Movie() { Cost=100,Name="M1",MovieId=1},
-            new Movie() { Cost=200,Name="M2",MovieId=2},
-            new Movie() { Cost=150,Name="M3",MovieId=3},
+            new Movie() { Cost=100,Name="M1",Id=1},
+            new Movie() { Cost=200,Name="M2",Id=2},
+            new Movie() { Cost=150,Name="M3",Id=3},
 
         };
 
@@ -27,7 +27,7 @@ namespace CleanArcheticture.Infrastructure.Repository
 
         public bool DeleteMovie(int ID)
         {
-            Movie oMovie = movies.FirstOrDefault(e => e.MovieId == ID);
+            Movie oMovie = movies.FirstOrDefault(e => e.Id == ID);
             movies.Remove(oMovie);
             return true;
         }
@@ -39,12 +39,12 @@ namespace CleanArcheticture.Infrastructure.Repository
 
         public Movie GetMoviesByID(int ID)
         {
-            return (movies != null) ? movies.FirstOrDefault(e => e.MovieId == ID) : new Movie();
+            return (movies != null) ? movies.FirstOrDefault(e => e.Id == ID) : new Movie();
         }
 
         public bool UpdateMovie(Movie oMovie)
         {
-            Movie objMovie = movies.FirstOrDefault(e => e.MovieId == oMovie.MovieId);
+            Movie objMovie = movies.FirstOrDefault(e => e.Id == oMovie.Id);
             if (objMovie != null)
             {
                 objMovie.Name = oMovie.Name;

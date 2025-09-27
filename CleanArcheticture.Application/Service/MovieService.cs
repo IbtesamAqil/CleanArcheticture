@@ -1,4 +1,4 @@
-﻿using CleanArcheticture.Domain;
+﻿using CleanArcheticture.Domain.Entites;
 using CleanArchitecture.Application.IRepository;
 using CleanArchitecture.Application.IService;
 

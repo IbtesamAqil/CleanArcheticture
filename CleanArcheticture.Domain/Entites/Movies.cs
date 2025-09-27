@@ -1,17 +1,16 @@
-﻿namespace CleanArcheticture.Domain
+﻿namespace CleanArcheticture.Domain.Entites
 {
-    public class Movie
-    {
+    public class Movie: EntityBase
+        {
         public Movie()
         {
         }
         public Movie(int MovieId, string Name, int Cost)
         {
-            this.MovieId = MovieId;
+            this.Id = MovieId;
             this.Name = Name;
             this.Cost = Cost;
         }
-        public int MovieId { get; set; }
         public string Name { get; set; } = string.Empty;
         public int Cost { get; set; }
 

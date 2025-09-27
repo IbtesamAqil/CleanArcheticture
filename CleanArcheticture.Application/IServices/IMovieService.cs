@@ -1,4 +1,4 @@
-﻿using CleanArcheticture.Domain;
+﻿using CleanArcheticture.Domain.Entites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
