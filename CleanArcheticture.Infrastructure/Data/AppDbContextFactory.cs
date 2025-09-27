@@ -16,7 +16,7 @@ public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
             .Build();
 
         var conn = config.GetConnectionString("DefaultConnection")
-                   ?? "Server=.\\SQLEXPRESS;Database=MovieDB;Trusted_Connection=True;TrustServerCertificate=True";
+                   ?? "Server=.;Database=MovieDB;Trusted_Connection=True;TrustServerCertificate=True";
 
         var options = new DbContextOptionsBuilder<AppDbContext>()
             .UseSqlServer(conn)

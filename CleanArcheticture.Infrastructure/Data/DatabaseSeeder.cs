@@ -7,9 +7,9 @@ using System.Linq;
 
 public static class DatabaseSeeder
     {
-    public static void SeedMovies(IServiceProvider serviceProvider)
+    public static void SeedMovies(AppDbContext context)
         {
-        using var context = serviceProvider.GetRequiredService<AppDbContext>();
+      //  context.Database.EnsureCreated();
 
         // Seed MovieTypes
         if (!context.Set<MovieTypes>().Any())
