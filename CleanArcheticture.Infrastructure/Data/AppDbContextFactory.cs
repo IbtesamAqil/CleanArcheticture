@@ -1,4 +1,4 @@
-﻿using CleanArcheticture.Infrastructure.Data;
+﻿using CleanArcheticture.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;

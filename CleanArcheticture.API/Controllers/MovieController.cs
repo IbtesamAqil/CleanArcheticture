@@ -49,9 +49,9 @@ namespace CleanArcheticture.API.Controllers
             return Ok();
         }
         [HttpPost("Delete")]
-        public IActionResult Delete(int Id)
+        public IActionResult Delete(Movie oMovie)
         {
-            _movieService.DeleteMovie(4);
+            _movieService.DeleteMovie(oMovie);
             return Ok();
         }
     }

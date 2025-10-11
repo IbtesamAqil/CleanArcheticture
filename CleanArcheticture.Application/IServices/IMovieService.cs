@@ -13,6 +13,6 @@ namespace CleanArchitecture.Application.IService
         Movie GetMoviesByID(int ID);
         void AddMovie(Movie oMovie);
         void UpdateMovie(Movie oMovie);
-        void DeleteMovie(int ID);
+        void DeleteMovie(Movie oMovie);
     }
 }

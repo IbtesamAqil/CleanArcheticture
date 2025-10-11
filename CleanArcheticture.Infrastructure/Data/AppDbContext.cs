@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArcheticture.Infrastructure.Data
+namespace CleanArcheticture.Infrastructure
     {
     public class AppDbContext : DbContext
         {

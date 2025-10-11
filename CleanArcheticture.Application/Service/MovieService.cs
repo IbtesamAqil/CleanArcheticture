@@ -1,63 +1,43 @@
 ﻿using CleanArcheticture.Domain.Entites;
+using CleanArcheticture.Domain.Interfaces;
 using CleanArchitecture.Application.IService;
 
 namespace CleanArchitecture.Application.Service
-{
-    public class MovieService : IMovieService
     {
-        //private readonly IMovieRepository movieRepository;
+    public class MovieService : IMovieService
+        {
+        private readonly IUnitOfWork _unitofwork;
 
-        //public MovieService(IMovieRepository _movieRepository)
-        //{
-        //    movieRepository = _movieRepository;
-        //}
-        //public List<Movie> GetAllMovies()
-        //{
-        //    List<Movie> movies = movieRepository.GetAllMovies();
-        //    return movies;
-        //}
-        //public void AddMovie(Movie oMovie)
-        //{
-        //    movieRepository.AddMovie(oMovie);
-        //}
-
-        //public void DeleteMovie(int ID)
-        //{
-        //    movieRepository.DeleteMovie(ID);
-        //}
-
-        //public Movie GetMoviesByID(int ID)
-        //{
-        //    return movieRepository.GetMoviesByID(ID);
-        //}
-
-        //public void UpdateMovie(Movie oMovie)
-        //{
-        //    movieRepository.UpdateMovie(oMovie);
-        //}
+        public MovieService(IUnitOfWork unitofwork)
+            {
+            _unitofwork = unitofwork;
+            }
         public void AddMovie(Movie oMovie)
-        {
-            throw new NotImplementedException();
-        }
+            {
+            _unitofwork.Repository<Movie>().Add(oMovie);
+            _unitofwork.Commit();
+            }
 
-        public void DeleteMovie(int ID)
-        {
-            throw new NotImplementedException();
-        }
+        public void DeleteMovie(Movie oMovie)
+            {
+            _unitofwork.Repository<Movie>().Delete(oMovie);
+            _unitofwork.Commit();
+            }
 
         public List<Movie> GetAllMovies()
-        {
-            throw new NotImplementedException();
-        }
+            {
+            return (List<Movie>)_unitofwork.Repository<Movie>().GetAll();
+            }
 
         public Movie GetMoviesByID(int ID)
-        {
-            throw new NotImplementedException();
-        }
+            {
+            return _unitofwork.Repository<Movie>().GetById(ID);
+            }
 
         public void UpdateMovie(Movie oMovie)
-        {
-            throw new NotImplementedException();
+            {
+            _unitofwork.Repository<Movie>().Update(oMovie);
+            _unitofwork.Commit();
+            }
         }
     }
-}

@@ -1,11 +1,9 @@
 using CleanArcheticture.Domain.Interfaces;
-using CleanArcheticture.Infrastructure.Data;
-using CleanArcheticture.Infrastructure.Repository;
-using CleanArcheticture.Infrastructure.UnitOfWork;
+using CleanArcheticture.Infrastructure;
 using CleanArchitecture.Application.IService;
 using CleanArchitecture.Application.Service;
+using CleanArchitecture.Infrastructure;
 using Microsoft.EntityFrameworkCore;
-using NuGet.Protocol.Core.Types;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,9 +1,5 @@
 ﻿using CleanArcheticture.Domain.Entites;
-using CleanArcheticture.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Linq;
+using CleanArcheticture.Infrastructure;
 
 public static class DatabaseSeeder
     {

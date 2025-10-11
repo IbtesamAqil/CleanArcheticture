@@ -6,11 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArcheticture.Domain.Interfaces
-{
-    public interface IUnitOfWork : IDisposable
     {
-        IRepository<Movie> Movies { get; }
-        IRepository<MovieTypes> MovieTypes { get; }
+    public interface IUnitOfWork : IDisposable
+        {
+        IRepository<TEntity> Repository<TEntity>() where TEntity : class;
         int Commit();
+        }
     }
-}

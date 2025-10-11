@@ -1,34 +1,32 @@
-﻿using CleanArcheticture.Domain.Entites;
-using CleanArcheticture.Domain.Interfaces;
-using CleanArcheticture.Infrastructure.Data;
-using CleanArcheticture.Infrastructure.Repository;
-using CleanArcheticture.Infrastructure.UnitOfWork;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CleanArcheticture.Domain.Interfaces;
+using CleanArcheticture.Infrastructure;
 
-namespace CleanArcheticture.Infrastructure.UnitOfWork
-{
-    public class UnitOfWork : IUnitOfWork
+namespace CleanArchitecture.Infrastructure
     {
+    public class UnitOfWork : IUnitOfWork
+        {
         private readonly AppDbContext _context;
-        private IRepository<Movie> _Movie;
-        private IRepository<MovieTypes> _MovieTypes;
+
+        // Keep created repositories in a cache (dictionary)
+        private readonly Dictionary<Type, object> _repositories = new();
 
         public UnitOfWork(AppDbContext context)
-        {
+            {
             _context = context;
-        }
+            }
+        public IRepository<TEntity> Repository<TEntity>() where TEntity : class
+            {
+            // if we already created it once, reuse it
+            if (_repositories.ContainsKey(typeof(TEntity)))
+                return (IRepository<TEntity>)_repositories[typeof(TEntity)];
 
-        public IRepository<Movie> Movies => _Movie ??= new Repository<Movie>(_context);
+            // else, create a new Repository<TEntity>, add to cache, return it
+            var repository = new Repository<TEntity>(_context);
+            _repositories.Add(typeof(TEntity), repository);
+            return repository;
+            }
 
-        public IRepository<MovieTypes> MovieTypes => _MovieTypes ??= new Repository<MovieTypes>(_context);
-
-        public int Commit() =>  _context.SaveChanges();
-
+        public int Commit() => _context.SaveChanges();
         public void Dispose() => _context.Dispose();
+        }
     }
-}
