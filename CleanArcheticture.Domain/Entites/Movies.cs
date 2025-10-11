@@ -5,9 +5,8 @@
         public Movie()
         {
         }
-        public Movie(int MovieId, string Name, int Cost)
+        public Movie(string Name, int Cost)
         {
-            this.Id = MovieId;
             this.Name = Name;
             this.Cost = Cost;
         }

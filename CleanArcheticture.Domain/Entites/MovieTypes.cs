@@ -9,7 +9,7 @@ namespace CleanArcheticture.Domain.Entites
     public class MovieTypes : EntityBase
         {
         public MovieTypes() { }
-        public MovieTypes(int Id,string Name)
+        public MovieTypes(string Name)
             {
             this.Id = Id;
             this.Name = Name;

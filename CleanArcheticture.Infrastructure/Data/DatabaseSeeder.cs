@@ -16,9 +16,9 @@ public static class DatabaseSeeder
             {
             var movieTypes = new[]
             {
-                new MovieTypes(1, "Action"),
-                new MovieTypes(2, "Comedy"),
-                new MovieTypes(3, "Drama")
+                new MovieTypes("Action"),
+                new MovieTypes("Comedy"),
+                new MovieTypes("Drama")
             };
             context.Set<MovieTypes>().AddRange(movieTypes);
             context.SaveChanges();
@@ -29,9 +29,9 @@ public static class DatabaseSeeder
             {
             var movies = new[]
             {
-                new Movie(1, "Die Hard", 10),
-                new Movie(2, "The Mask", 8),
-                new Movie(3, "Forrest Gump", 12)
+                new Movie("Die Hard", 10),
+                new Movie("The Mask", 8),
+                new Movie("Forrest Gump", 12)
             };
             context.Set<Movie>().AddRange(movies);
             context.SaveChanges();
