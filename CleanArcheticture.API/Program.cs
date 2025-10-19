@@ -1,14 +1,20 @@
 using CleanArcheticture.Application;
 using CleanArcheticture.Domain.Interfaces;
 using CleanArcheticture.Infrastructure;
+using CleanArcheticture.Infrastructure.Authentication;
 using CleanArchitecture.Application;
 using CleanArchitecture.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddApplication();        
+builder.Services.AddInfrastructure(builder.Configuration);
+
 // Add services to the container.
 builder.Services.AddControllers();
+builder.Services.AddAuthorization();
+
 
 // Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
@@ -40,6 +46,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.UseAuthentication();  
 app.MapControllers();
 
 await using (var scope = app.Services.CreateAsyncScope())

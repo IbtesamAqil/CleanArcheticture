@@ -1,6 +1,7 @@
 ﻿using CleanArcheticture.Application;
 using CleanArcheticture.Domain.Entites;
 using CleanArcheticture.Domain.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArcheticture.API.Controllers
@@ -13,6 +14,7 @@ namespace CleanArcheticture.API.Controllers
         {
             _iMovieTypesService = oIMovieTypesService;
         }
+        [Authorize]
         [HttpGet("Get")]
         public IActionResult GetMovies()
         {

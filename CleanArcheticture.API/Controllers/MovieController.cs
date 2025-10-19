@@ -1,10 +1,12 @@
 ﻿using CleanArcheticture.Domain.Entites;
 using CleanArchitecture.Application;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArcheticture.API.Controllers
 {
     [Route("api/Movie")]
+    [Authorize]
     public class MovieController : Controller
     {
         private readonly IMovieService _movieService;
