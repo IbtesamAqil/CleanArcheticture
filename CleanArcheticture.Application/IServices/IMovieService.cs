@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArchitecture.Application.IService
+namespace CleanArchitecture.Application
 {
     public interface IMovieService
     {

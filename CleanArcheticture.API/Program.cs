@@ -1,7 +1,7 @@
+using CleanArcheticture.Application;
 using CleanArcheticture.Domain.Interfaces;
 using CleanArcheticture.Infrastructure;
-using CleanArchitecture.Application.IService;
-using CleanArchitecture.Application.Service;
+using CleanArchitecture.Application;
 using CleanArchitecture.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,6 +24,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Add repositories and services
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IMovieService, MovieService>();
+builder.Services.AddScoped<IMovieTypesService, MovieTypesService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 var app = builder.Build();
 

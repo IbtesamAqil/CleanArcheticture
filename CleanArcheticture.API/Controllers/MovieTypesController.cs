@@ -1,4 +1,5 @@
-﻿using CleanArcheticture.Domain.Entites;
+﻿using CleanArcheticture.Application;
+using CleanArcheticture.Domain.Entites;
 using CleanArcheticture.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,41 +8,37 @@ namespace CleanArcheticture.API.Controllers
     [Route("api/MovieTypes")]
     public class MovieTypesController : Controller
     {
-        private readonly IUnitOfWork _iUnitOfWork;
-        public MovieTypesController(IUnitOfWork oIUnitOfWork)
+        private readonly IMovieTypesService _iMovieTypesService;
+        public MovieTypesController(IMovieTypesService oIMovieTypesService)
         {
-            _iUnitOfWork = oIUnitOfWork;
+            _iMovieTypesService = oIMovieTypesService;
         }
         [HttpGet("Get")]
         public IActionResult GetMovies()
         {
-            List<MovieTypes> movieTypesList = _iUnitOfWork.Repository<MovieTypes>().GetAll().ToList();
-            return Ok(movieTypesList);
+            return Ok(_iMovieTypesService.GetAllMovieTypes());
         }
         [HttpGet("GetById")]
         public IActionResult GetAllMovies(int Id)
         {
-            MovieTypes movieTypeObject = _iUnitOfWork.Repository<MovieTypes>().GetById(Id);
-            return Ok(movieTypeObject);
+            return Ok(_iMovieTypesService.GetMovieTypeByID(Id));
         }
         [HttpPost("Add")]
         public IActionResult Add(MovieTypes oMovieTypes)
         {
-            _iUnitOfWork.Repository<MovieTypes>().Add(oMovieTypes);
+            _iMovieTypesService.AddMovieType(oMovieTypes);
             return Ok();
         }
         [HttpPost("Update")]
         public IActionResult Update(MovieTypes oMovieTypes)
         {
-            MovieTypes oMovieTypes1 = _iUnitOfWork.Repository<MovieTypes>().GetById(oMovieTypes.Id);
-            oMovieTypes1.Name = oMovieTypes.Name;
-            _iUnitOfWork.Repository<MovieTypes>().Update(oMovieTypes1);
+            _iMovieTypesService.UpdateMovieType(oMovieTypes);
             return Ok();
         }
         [HttpPost("Delete")]
         public IActionResult Delete(MovieTypes oMovieTypes)
         {
-            _iUnitOfWork.Repository<MovieTypes>().Delete(oMovieTypes);
+            _iMovieTypesService.DeleteMovieType(oMovieTypes);
             return Ok();
         }
     }

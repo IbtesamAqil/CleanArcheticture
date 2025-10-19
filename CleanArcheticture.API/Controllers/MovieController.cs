@@ -1,5 +1,5 @@
 ﻿using CleanArcheticture.Domain.Entites;
-using CleanArchitecture.Application.IService;
+using CleanArchitecture.Application;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArcheticture.API.Controllers
@@ -21,30 +21,18 @@ namespace CleanArcheticture.API.Controllers
         [HttpGet("GetById")]
         public IActionResult GetAllMovies(int Id)
         {
-            var movieList = _movieService.GetMoviesByID(4);
+            var movieList = _movieService.GetMoviesByID(Id);
             return Ok(movieList);
         }
         [HttpPost("Add")]
-        public IActionResult Add(int Id)
+        public IActionResult Add(Movie oMovie)
         {
-            Movie oMovie = new Movie()
-            {
-                Cost = 900,
-                Name = "NoorAndIbtesam",
-                Id = 4
-            };
             _movieService.AddMovie(oMovie);
             return Ok();
         }
         [HttpPost("Update")]
-        public IActionResult Update(int Id)
+        public IActionResult Update(Movie oMovie)
         {
-            Movie oMovie = new Movie()
-            {
-                Cost = 1000,
-                Name = "Noor And Ibtesam",
-                Id = 4
-            };
             _movieService.UpdateMovie(oMovie);
             return Ok();
         }

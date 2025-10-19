@@ -1,8 +1,7 @@
 ﻿using CleanArcheticture.Domain.Entites;
 using CleanArcheticture.Domain.Interfaces;
-using CleanArchitecture.Application.IService;
 
-namespace CleanArchitecture.Application.Service
+namespace CleanArchitecture.Application
     {
     public class MovieService : IMovieService
         {

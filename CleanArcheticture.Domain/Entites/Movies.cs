@@ -8,7 +8,7 @@
         public Movie(string Name, int Cost)
         {
             this.Name = Name;
-            this.Cost = Cost;
+            this.Cost = Cost;          
         }
         public string Name { get; set; } = string.Empty;
         public int Cost { get; set; }
